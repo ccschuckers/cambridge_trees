@@ -1,0 +1,13 @@
+install.packages(c("sf","leaflet", "dplyr"))
+library(sf)
+library(leaflet)
+library(dplyr)
+
+tree_points <- readreadread.csv("your_csv.csv")
+trees_sf <- st_as_sf(tree_points, coords=c("Longitude", "Latitude"), crs = 4326)
+trees_geo <- st_transform(trees_sf, 4326)
+
+parks <- st_read("your_filepath_RECREATION.shp")
+parks_geo <- st_transform(parks, 4326)
+trees_geo <- st_make_valid(trees_geo)
+parks_geo <- st_make_valid(parks_geo)
